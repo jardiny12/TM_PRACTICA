@@ -1,0 +1,74 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+
+:root {
+    --primary-color: #8ba5c3;
+    --accent-color: #ba6a73;
+    --header-height: 60px;
+}
+body {
+    font-family: 'Caveat Brush', cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #c3aeae;
+}
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0 20px;
+}
+
+.app-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.navigation {
+    margin-top: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    background-color: #a5716b;   /* color base del botón */
+    color: #fff;                /* texto blanco */
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-links a:hover {
+    background-color: #1a0603;  /* tono más claro al pasar el mouse */
+    transform: scale(1.05);     /* efecto leve de zoom */
+}
+
+
+/* Contenido principal */
+.content-box {
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    padding: 20px;
+    margin-top: 20px;
+}
