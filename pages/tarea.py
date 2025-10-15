@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 import numpy as np
 
 # Registrar nueva página
-dash.register_page(__name__, path="/tarea", name="Clase 2")
+dash.register_page(__name__, path="/tarea", name="Tarea 1")
 
 # --- Modelo logístico ---
 r = 0.2   # tasa de crecimiento
