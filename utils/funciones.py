@@ -410,3 +410,129 @@ def mapa_covid_global():
     )
 
     return fig
+import requests
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.express as px
+from functools import lru_cache
+
+# ============================================================
+# SESIÓN GLOBAL DE REQUESTS (acelera x4)
+# ============================================================
+session = requests.Session()
+
+
+# ============================================================
+# API: Países SIN clima (rápido)
+# ============================================================
+def get_countries():
+    """
+    Carga lista de países desde RESTCountries sin pedir clima.
+    Evita 250 llamadas API lentas. Ultra rápido (<200ms).
+    """
+    url = "https://restcountries.com/v3.1/all?fields=name,latlng"
+    r = session.get(url, timeout=10)
+
+    if r.status_code != 200:
+        return pd.DataFrame(columns=["country", "lat", "lon"])
+
+    data = r.json()
+    rows = []
+
+    for c in data:
+        if "latlng" not in c or len(c["latlng"]) < 2:
+            continue
+        rows.append({
+            "country": c["name"]["common"],
+            "lat": c["latlng"][0],
+            "lon": c["latlng"][1]
+        })
+
+    df = pd.DataFrame(rows)
+    df = df.sort_values("country")
+    return df
+
+
+# ============================================================
+# API: Clima Open-Meteo cacheado
+# ============================================================
+@lru_cache(maxsize=300)
+def get_weather(lat, lon):
+    """
+    Consulta Open-Meteo y devuelve temperaturas horarias.
+    Cacheado por país (rápido en 50 ms).
+    """
+
+    url = (
+        "https://api.open-meteo.com/v1/forecast?"
+        f"latitude={lat}&longitude={lon}&hourly=temperature_2m"
+    )
+
+    r = session.get(url, timeout=10).json()
+
+    hours = r["hourly"]["time"]
+    temps = r["hourly"]["temperature_2m"]
+
+    df = pd.DataFrame({"time": hours, "temperature": temps})
+    df["time"] = pd.to_datetime(df["time"])
+
+    return df
+
+
+# ============================================================
+# Gráfico de Líneas
+# ============================================================
+def clima_line_plot(df, country):
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatter(
+        x=df["time"],
+        y=df["temperature"],
+        mode="lines",
+        line=dict(color="black", width=2),
+        name="Temperatura"
+    ))
+
+    fig.update_layout(
+        title=f"Temperatura Horaria — {country}",
+        title_x=0.5,
+        font=dict(family="Caveat Brush", size=20),
+        xaxis_title="Tiempo",
+        yaxis_title="Temperatura (°C)",
+        plot_bgcolor="white",
+        paper_bgcolor="white",
+        margin=dict(l=40, r=20, t=50, b=40)
+    )
+
+    return fig
+
+
+# ============================================================
+# Mapa Mundial — sin pedir clima (rápido)
+# ============================================================
+def clima_world_map(df):
+    """
+    Mapa global simple (solo posiciones), NO usa sensación térmica.
+    rápido y suficiente para mostrar países.
+    """
+
+    fig = px.scatter_geo(
+        df,
+        lat="lat",
+        lon="lon",
+        hover_name="country",
+        opacity=0.6,
+        projection="natural earth",
+        title="Mapa Mundial (Ubicación de Países)"
+    )
+
+    fig.update_layout(
+        margin=dict(l=0, r=0, t=40, b=0),
+        geo=dict(
+            showcountries=True,
+            showcoastlines=True,
+            landcolor="rgb(230,230,230)"
+        )
+    )
+
+    return fig

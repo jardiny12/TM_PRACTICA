@@ -2,6 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
 
 
+/* Puedes añadir estas reglas si quieres que el layout use las clases definidas previamente */
+.contenedor-principal {
+    padding: 18px;
+}
+.panel-izquierdo { background: rgba(255,255,255,0.9); }
+.btn-generar { background: #a5716b; color: white; border-radius: 6px; padding: 8px 12px; }
+.covid-estadisticas .card { border-left: 5px solid #a5716b; }
+
+
 * {
   font-family: 'Caveat Brush', cursive !important;
 }
