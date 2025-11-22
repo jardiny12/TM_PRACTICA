@@ -1,6 +1,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
 
+
+* {
+  font-family: 'Caveat Brush', cursive !important;
+}
+
+
 :root {
     --primary-color: #8ba5c3;
     --accent-color: #ba6a73;
@@ -221,3 +227,280 @@ body {
     }
 }
 
+/* ========================================================= */
+/*      ESTILOS EXCLUSIVOS PARA LA PÁGINA SEIR               */
+/* ========================================================= */
+
+/* Distribución general */
+.contenedor-principal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+/* ---------------- PANEL IZQUIERDO ---------------- */
+.panel-izquierdo {
+    width: 28%;
+    min-width: 300px;
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.panel-izquierdo .titulo {
+    text-align: center;
+    color: #a03333;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* Labels e inputs */
+.input-label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #4a2a2a;
+}
+
+.input-field {
+    width: 100%;
+    padding: 8px;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 1.05rem;
+    border: 2px solid #b35c5c;
+    border-radius: 6px;
+    background-color: #fff;
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+}
+
+.input-field:focus {
+    border-color: #1a0603;
+}
+
+/* Botón */
+.btn-generar {
+    background-color: #a5716b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Caveat Brush', cursive;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.btn-generar:hover {
+    background-color: #1a0603;
+    transform: scale(1.05);
+}
+
+/* ---------------- PANEL DERECHO ---------------- */
+.panel-derecho {
+    width: 60%;
+    min-width: 420px;
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    padding: 20px 25px;
+    box-sizing: border-box;
+}
+
+/* ---------------- PANEL TEORÍA ABAJO ---------------- */
+.panel-teoria {
+    width: 85%;
+    background-color: rgba(255,255,255,0.9);
+    margin: 20px auto 0 auto;
+    padding: 25px 30px;
+    border-left: 6px solid #a5716b;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.panel-teoria h3,
+.panel-teoria h2 {
+    margin-top: 0;
+    text-align: center;
+    color: #421919;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 900px) {
+    .contenedor-principal {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .panel-izquierdo,
+    .panel-derecho {
+        width: 95%;
+    }
+
+    .panel-teoria {
+        width: 95%;
+    }
+}
+/* ================================================================= */
+/*  ESTILO DEL LAYOUT SIR — Igual que SEIR (NO afecta nada más)      */
+/* ================================================================= */
+
+.sir-layout {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+    .sir-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* ========================================================= */
+/*      ESTILOS EXCLUSIVOS PARA LA PÁGINA COVID-19           */
+/* ========================================================= */
+
+.covid-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+/* PANEL IZQUIERDO */
+.covid-panel-izquierdo {
+    width: 28%;
+    min-width: 300px;
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.covid-panel-izquierdo .titulo-panel {
+    text-align: center;
+    color: #a03333;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #4a2a2a;
+}
+
+.dropdown {
+    width: 100%;
+    margin-bottom: 14px;
+}
+
+.btn-actualizar {
+    background-color: #a5716b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Caveat Brush', cursive;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.btn-actualizar:hover {
+    background-color: #1a0603;
+    transform: scale(1.05);
+}
+
+.texto-actualizacion {
+    margin-top: 15px;
+    color: #4a2a2a;
+    font-size: 17px;
+}
+
+
+
+/* PANEL DERECHO */
+.covid-panel-derecho {
+    width: 60%;
+    min-width: 420px;
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+
+
+/* TARJETAS DE ESTADÍSTICAS */
+.covid-estadisticas {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    flex: 1;
+    background-color: rgba(255,255,255,0.9);
+    padding: 15px 10px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    border-left: 5px solid #a5716b;
+}
+
+.card h4 {
+    margin: 0;
+    color: #5a2a2a;
+    font-size: 18px;
+}
+
+.card h3 {
+    margin: 8px 0 0 0;
+    color: #1a0603;
+    font-size: 22px;
+}
+
+
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+
+    .covid-contenedor {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .covid-panel-izquierdo,
+    .covid-panel-derecho {
+        width: 95%;
+    }
+
+    .covid-estadisticas {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+}

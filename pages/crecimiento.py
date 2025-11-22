@@ -4,7 +4,7 @@ import plotly.express as px
 import numpy as np
 import pandas as pd
 
-dash.register_page(__name__, path="/clase1", name="Clase 1")
+dash.register_page(__name__, path="/crecimiento", name="Modelo de Crecimiento")
 
 # --- Datos del modelo de crecimiento exponencial ---
 P0 = 100
@@ -31,15 +31,7 @@ fig.update_layout(
 )
 
 layout = html.Div(
-        style={
-        "display": "flex",
-        "gap": "30px",
-        "padding": "20px",
-        "backgroundColor": "rgba(255,255,255,0.9)",
-        "borderRadius": "12px",
-        "boxShadow": "0 3px 8px rgba(0,0,0,0.2)",
-        "marginTop": "20px"
-    },
+    
     className="contenedor-principal",
     children=[
         html.Div(

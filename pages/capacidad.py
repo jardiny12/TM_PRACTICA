@@ -3,8 +3,14 @@ from dash import dcc, html, Input, Output, State, callback
 import numpy as np
 import plotly.graph_objs as go
 
-# Registrar nueva página
-dash.register_page(__name__, path="/clase2", name="Clase 2")
+# ---------------------------------------------
+# REGISTRO DE LA PÁGINA
+# ---------------------------------------------
+dash.register_page(
+    __name__,
+    path="/capacidad",
+    name="Capacidad de Carga"
+)
 
 # ------------------------
 # Layout

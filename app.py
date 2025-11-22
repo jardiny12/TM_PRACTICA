@@ -1,7 +1,12 @@
 import dash
 from dash import html, dcc, page_container
 
-app = dash.Dash(__name__, use_pages=True)
+app = dash.Dash(
+    __name__,
+    use_pages=True,
+    suppress_callback_exceptions=True   # <<< AGREGA ESTO
+)
+
 server = app.server
 
 app.layout = html.Div(className='app-container', children=[
